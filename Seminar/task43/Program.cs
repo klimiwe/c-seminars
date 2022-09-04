@@ -1,35 +1,20 @@
-﻿// Создать массив и скопировать его с помощью поэлементного копирования
+﻿//  Напишите программу, которая найдёт точку пересечения двух прямых, 
+// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; 
+// значения b1, k1, b2 и k2 задаются пользователем.
+// // b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 
-int[] GetArray(int size, int minValue, int maxValue)
-{
-    int[] res = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        res[i] = new Random().Next(minValue, maxValue + 1);
-    }
-    return res;
+double b1,b2,k1,k2;
+Console.WriteLine("Введите b1");
+b1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите k1");
+k1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите b2");
+b2 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите k2");
+k2 = Convert.ToInt32(Console.ReadLine());
 
-}
-void PrintArray(int[] arr)
-{
-    int length = arr.Length;
-    for (int i = 0; i < length; i++)
-    {
-        Console.Write(arr[i] + " ");
-    }
-}
-int [] NewArray (int [] array)
-{
-    int [] newArray = new int [array.Length];
-    for (int i=0; i<array.Length; i++)
-    {
-        newArray [i] = array[i];
-    }
-    return newArray;
-}
+double x,y;
+x=(b1-b2)/(k2-k1);
+y = (k2*x)+b2;
 
-int [] array = GetArray (8, 0,9);
-PrintArray (array);
-int [] clonedArray = NewArray(array);
-Console.WriteLine();
-PrintArray (clonedArray);
+Console.WriteLine ("Точка пересечения прямых имеет следующие координаты: x " +x+ ", y " +y);
