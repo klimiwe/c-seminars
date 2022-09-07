@@ -13,33 +13,43 @@ int rows = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов ");
 int columns = int.Parse(Console.ReadLine());
 
+Console.WriteLine("Введите количество столбцов ");
+int time = int.Parse(Console.ReadLine());
+
+
 int min = 0, max = 99;
-int[,] array = GetDoubleArray(rows, columns, min, max);
+int[,,] array = GetTripleArray(rows, columns, time, min, max);
 PrintArray(array);
 Console.WriteLine();
 
-MaxSummRowsInArray(array);
 
-int[,] GetDoubleArray(int rows, int columns, int min, int max)
+int[,,] GetTripleArray(int rows, int columns, int time, int min, int max)
 {
-    int[,] resultArray = new int[rows, columns];
+    int[,,] resultArray = new int[rows, columns, time];
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
         {
-            resultArray[i, j] = new Random().Next(min, max);
+            for (int k = 0; k < time; k++)
+            {
+                resultArray[i, j, k] = new Random().Next(min, max);
+
+
+            }
         }
     }
     return resultArray;
 }
-void PrintArray(int[,] array)
+void PrintArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"{array[i, j]} ");
+            for (int k = 0; k < array.GetLength(2); k++)
+                Console.Write($"{array[i, j, k]} ({i}, {j}, {k}) ");
+            Console.WriteLine();
         }
-        Console.WriteLine();
+
     }
 }
